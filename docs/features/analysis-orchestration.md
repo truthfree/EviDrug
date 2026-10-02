@@ -51,4 +51,4 @@ PR #116 이후 [PoC opt-in 구성](poc-full-execution.md)은 ADMET·DTA·Decisio
 SQLite 테스트는 PostgreSQL의 실제 조건부 갱신·잠금 부하를 대체하지 않는다. worker 강제 종료,
 Beat 회수와 실제 Agent/provider를 포함한 검증은 운영 연결 Issue에서 수행한다.
 
-관련 백엔드 Issue #83.
+관련 백엔드 [Issue #83](https://github.com/truthfree/EviDrug-Dacon2026/issues/83).

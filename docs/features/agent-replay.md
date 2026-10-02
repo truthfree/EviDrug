@@ -217,7 +217,7 @@ schema를 live 조회로 보충하지 않는다. `ReplayExecutor`가 호출을 �
 참조만 있고, LLM이 본 전체 후보 자료는 없다. shortlist 결과에서 후보 집합을 역으로 생성하면
 원래 판단 조건을 바꾸게 된다.
 
-#106에서 다음을 구현한다.
+[#106](https://github.com/truthfree/EviDrug-Dacon2026/issues/106)에서 다음을 구현한다.
 
 1. 후보 조회 직후 전체 `TargetCandidateBatch`를 별도 typed snapshot으로 저장: 탈락 후보,
    function description, tractability, 인과 근거, source version/time, 조회 limit.
@@ -250,6 +250,6 @@ downgrade 후 재적용을 확인한다. PostgreSQL/컨테이너 통합 검증�
 검증은 로컬 코드에서 DB에 직접 연결해 수행했으며, Docker 내부 CLI 실행과 유료 live 호출은
 수행하지 않았다.
 
-관련: #104,
-#106,
-후속 개선 목록.
+관련: [#104](https://github.com/truthfree/EviDrug-Dacon2026/issues/104),
+[#106](https://github.com/truthfree/EviDrug-Dacon2026/issues/106),
+[고도화 로드맵](../enhancement-roadmap.md).

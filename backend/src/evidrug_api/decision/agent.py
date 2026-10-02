@@ -163,11 +163,12 @@ class DecisionResult(ContractModel):
 
 
 DECISION_PROMPT_VERSION = "decision-gated-synthesis-v5.7"
-DECISION_MAX_OUTPUT_TOKENS = 4096
+DECISION_MAX_OUTPUT_TOKENS = 8192
 DECISION_MAX_INPUT_BYTES = 64 * 1024
 DECISION_CORRECTION_REASON_CODES = frozenset(
     {
         "decision_json_invalid",
+        "decision_response_incomplete",
         "decision_key_value_out_of_range",
         "decision_key_value_label_mismatch",
     }
@@ -365,15 +366,19 @@ def _correction_instructions(reason_code: str) -> str:
     """거부 원문을 재전송하지 않고 승인된 검증 사유만 교정 지시로 추가한다."""
     guidance = {
         "decision_json_invalid": (
-            "Return one complete object matching the supplied strict JSON schema."
+            "Return one complete and concise object matching the supplied strict JSON schema."
+        ),
+        "decision_response_incomplete": (
+            "The previous response did not finish. Return a shorter complete object within the "
+            "output limit. Keep every prose field concise and return JSON only."
         ),
         "decision_key_value_out_of_range": (
-            "Use only numeric values present in the supplied evidence. Omit optional "
-            "key_values entries when no supported value is necessary."
+            "Set key_values to [] in target, dta, adme, and safety. Do not emit numeric "
+            "key_values; preserve the evidence-based conclusion in concise summaries."
         ),
         "decision_key_value_label_mismatch": (
-            "Pair every key_values number with its exact evidence metric and label. Omit "
-            "optional key_values entries when the metric-to-label mapping is uncertain."
+            "Set key_values to [] in target, dta, adme, and safety. Do not emit numeric "
+            "key_values; preserve the evidence-based conclusion in concise summaries."
         ),
     }[reason_code]
     return (
@@ -485,17 +490,12 @@ class DecisionAgent:
             correction_reason: str | None = None
             while True:
                 try:
-                    if correction_reason is None:
-                        generated = await self.client.generate_text(
-                            prompt, instructions=instructions, max_output_tokens=output_limit
-                        )
-                    else:
-                        generated = await self.client.generate_text(
-                            prompt,
-                            instructions=instructions,
-                            max_output_tokens=output_limit,
-                            output_schema=DecisionAssessmentGeneration,
-                        )
+                    generated = await self.client.generate_text(
+                        prompt,
+                        instructions=instructions,
+                        max_output_tokens=output_limit,
+                        output_schema=DecisionAssessmentGeneration,
+                    )
                 except Exception as error:
                     usage = usage.model_copy(
                         update={"external_requests": usage.external_requests + 1}

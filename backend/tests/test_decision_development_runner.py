@@ -39,9 +39,15 @@ async def test_runner_makes_six_calls_without_retry_and_preserves_failed_attempt
         closed = False
 
         async def generate_text(
-            self, prompt: str, *, instructions: str, max_output_tokens: int
+            self,
+            prompt: str,
+            *,
+            instructions: str,
+            max_output_tokens: int,
+            output_schema: type[object] | None = None,
         ) -> SimpleNamespace:
-            assert max_output_tokens == 4096
+            assert max_output_tokens == 8192
+            assert output_schema is runner.DecisionAssessmentGeneration
             calls.append((prompt, instructions))
             if len(calls) == failed_call:
                 raise TimeoutError("synthetic timeout")

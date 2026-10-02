@@ -15,6 +15,7 @@ from evidrug_api.admet.toxicity import calculate_toxicity_axes
 from evidrug_api.analysis_jobs.results import project_decision
 from evidrug_api.decision.agent import (
     DECISION_MAX_INPUT_BYTES,
+    DECISION_MAX_OUTPUT_TOKENS,
     INSTRUCTIONS,
     DecisionAssessment,
     DecisionAssessmentGeneration,
@@ -34,6 +35,7 @@ from evidrug_api.dta.contracts import SCORE_UNITS, DtaModel, DtaObservation, Dta
 
 
 def test_decision_input_limit_is_64_kib_including_fixed_margin() -> None:
+    assert DECISION_MAX_OUTPUT_TOKENS == 8192
     assert decision_input_size("x" * (DECISION_MAX_INPUT_BYTES - 512), "") == (
         DECISION_MAX_INPUT_BYTES
     )

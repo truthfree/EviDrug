@@ -147,7 +147,7 @@ metrics는 로그 `admet_runtime` extra field와 통합 보고서에 남긴다. 
 실제 사용자 검증: 루트에서 `bash experiments/admet-smoke/run-provider.sh`.
 2026-09-18 사용자 실행으로 로컬 1 CPU/2GB에서 49개 endpoint의 SQL round-trip과
 cold→warm 모델 재사용이 통과했다. warm 추론 0.576초, 모델 프로세스 peak RSS 763.949 MiB였다.
-관련: Issue #75.
+관련: [Issue #75](https://github.com/truthfree/EviDrug-Dacon2026/issues/75).
 
 ## 저장 결과 조회·context 구성
 
@@ -173,7 +173,7 @@ binding·admission·조회 이력 계약을 연결해야 한다. 계산 runner�
 정상 경로는 4개 SELECT를 사용하며 session transaction 종료는 호출자가 맡는다.
 상세 오류·선택 정책·미구현 범위는 [기능 명세](../../../../docs/features/admet-result-context.md)를 따른다.
 
-관련: Issue #64,
-Issue #66,
+관련: [Issue #64](https://github.com/truthfree/EviDrug-Dacon2026/issues/64),
+[Issue #66](https://github.com/truthfree/EviDrug-Dacon2026/issues/66),
 [ADMET baseline](../../../../docs/features/admet-baseline.md),
 [OpenAI tools](https://developers.openai.com/api/docs/guides/tools)

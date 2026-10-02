@@ -111,7 +111,7 @@ uv run alembic upgrade head
 새 migration은 `0005_tool_admission`이다. downgrade는 승인·예산 기록을 삭제하므로 활성 run이
 있는 운영 DB에서 수행하면 안 된다. 실제 PostgreSQL 경쟁·잠금 및 worker 운영 검증은 별도로 필요하다.
 테스트는 fake provider와 파일 SQLite를 쓰며 실제 Docker/API key가 필요 없다.
-새 도구는 [실행 계약](../execution_contracts/README.md)과
-[기여 안내](../../../../CONTRIBUTING.md)를 따른다.
-관련: Issue #79,
+새 도구는 [확장 규칙](../../../../docs/team-rules/tool-extension-rules.md)과
+[실행 계약](../execution_contracts/README.md)을 따른다.
+관련: [Issue #79](https://github.com/truthfree/EviDrug-Dacon2026/issues/79),
 [기능 명세](../../../../docs/features/tool-admission.md).

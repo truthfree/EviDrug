@@ -121,4 +121,4 @@ Celery worker 강제 종료와 실제 Agent/provider 연결은 통합 환경에�
 
 관련: [기능 명세](../../../../docs/features/analysis-orchestration.md),
 [평가 가능 아키텍처](../../../../docs/decisions/002-evaluation-ready-agent-architecture.md),
-Issue #83.
+[Issue #83](https://github.com/truthfree/EviDrug-Dacon2026/issues/83).

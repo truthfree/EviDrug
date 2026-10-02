@@ -51,6 +51,6 @@ SQLite round-trip과 완료 호출 재전달을 확인했다. Render/Free 및 �
 이번 계약 단계는 실패에 가짜 score를 생성하지 않고, SQL round-trip과 멱등성을 검증한다.
 운영 PostgreSQL 및 Render 모델 실행 검증은 별도로 수행한다.
 
-관련: Issue #71,
-선행 smoke PR #70,
+관련: [Issue #71](https://github.com/truthfree/EviDrug-Dacon2026/issues/71),
+[선행 smoke PR #70](https://github.com/truthfree/EviDrug-Dacon2026/pull/70),
 [구현 안내](../../backend/src/evidrug_api/dta/README.md).

@@ -37,5 +37,5 @@ worker와 Beat가 실행되어야 주기 회수가 작동한다. 회수는 재�
 로컬 SQLite 검증은 운영 PostgreSQL의 부하/잠금 검증을 대체하지 않는다.
 Docker·Render 변경 없이 진행하며 실제 worker/Beat 운영 검증은 배포 단계에서 수행한다.
 
-관련 백엔드: Issue #77.
+관련 백엔드: [Issue #77](https://github.com/truthfree/EviDrug-Dacon2026/issues/77).
 프론트엔드 변경 없음. 구현/운영 안내: [공통 실행 계층](../../backend/src/evidrug_api/tool_execution/README.md).

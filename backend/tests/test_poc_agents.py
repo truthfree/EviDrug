@@ -399,7 +399,8 @@ class DecisionClient:
         self.calls.append(prompt)
         self.instructions.append(instructions)
         self.output_schemas.append(output_schema)
-        assert max_output_tokens == 4096
+        assert max_output_tokens == 8192
+        assert output_schema is DecisionAssessmentGeneration
         payload = json.loads(prompt)
         assert payload["allowed_evidence_ids"] == list(payload["evidence"])
         assert payload["required_citation_prefixes"] == sorted(
@@ -478,11 +479,17 @@ class DecisionClient:
             if self.mode in {"malformed", "malformed_once"}
             and (self.mode == "malformed" or len(self.calls) == 1)
             else json.dumps(output),
-            ResponseUsage(10, 4096, 4106)
+            ResponseUsage(10, 8192, 8202)
             if self.mode == "incomplete"
+            or (self.mode == "incomplete_once" and len(self.calls) == 1)
             else ResponseUsage(10, 10, 20),
             DaconQuota(None, None, None, None),
-            status="incomplete" if self.mode == "incomplete" else "completed",
+            status=(
+                "incomplete"
+                if self.mode == "incomplete"
+                or (self.mode == "incomplete_once" and len(self.calls) == 1)
+                else "completed"
+            ),
         )
 
 
@@ -502,6 +509,7 @@ class DecisionClient:
         (False, (), "schema", "failed"),
         (False, (), "missing_citation", "failed"),
         (False, (), "nested_citation", "failed"),
+        (False, (), "incomplete_once", "completed"),
         (False, (), "incomplete", "failed"),
         (False, (), "network", "failed"),
         (True, (), "unqualified_go", "failed"),
@@ -539,11 +547,13 @@ async def test_full_poc_dag_persists_real_contracts_without_network(
         "malformed_once",
         "bad_value_once",
         "bad_value_label_once",
+        "incomplete_once",
+        "incomplete",
     }
     expected_calls = 2 if corrected else 1
     assert len(client.calls) == expected_calls
     assert len(client.instructions) == expected_calls
-    assert client.output_schemas == ([None, DecisionAssessmentGeneration] if corrected else [None])
+    assert client.output_schemas == [DecisionAssessmentGeneration] * expected_calls
     assert "All twelve output fields are required" in client.instructions[0]
     assert "experimental_binding_support" in client.instructions[0]
     if corrected:
@@ -553,8 +563,12 @@ async def test_full_poc_dag_persists_real_contracts_without_network(
             else "decision_key_value_out_of_range"
             if decision_mode == "bad_value_once"
             else "decision_json_invalid"
+            if decision_mode not in {"incomplete", "incomplete_once"}
+            else "decision_response_incomplete"
         )
         assert reason in client.instructions[1]
+        if decision_mode in {"bad_value_once", "bad_value_label_once"}:
+            assert "Set key_values to [] in target, dta, adme, and safety" in client.instructions[1]
     prompt = client.calls[0]
     if not admet_failure:
         projected = json.loads(prompt)["evidence"]["admet:context"]
@@ -600,7 +614,15 @@ async def test_full_poc_dag_persists_real_contracts_without_network(
         if decision_mode == "network":
             assert output["execution_metadata"]["usage"]["token_usage"] is None
         else:
-            expected_tokens = 40 if corrected else 4106 if decision_mode == "incomplete" else 20
+            expected_tokens = (
+                16404
+                if decision_mode == "incomplete"
+                else 8222
+                if decision_mode == "incomplete_once"
+                else 40
+                if corrected
+                else 20
+            )
             assert output["execution_metadata"]["usage"]["token_usage"]["total_tokens"] == (
                 expected_tokens
             )

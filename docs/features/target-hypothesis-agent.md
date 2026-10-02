@@ -61,7 +61,7 @@ retryable flag를 보존하지만 이번 범위에서 자동 재시도하지 않
 - fake provider 기반 단위·orchestration 통합 테스트가 통과한다.
 - Docker Compose 실제 실행에서 Target 완료 상태와 DB output을 확인한다.
 
-관련 백엔드 Issue #93.
+관련 백엔드 [Issue #93](https://github.com/truthfree/EviDrug-Dacon2026/issues/93).
 
 Issue #93의 단일 association 후보 선택 계약은 후속
 [Target Prioritization v2](./target-prioritization-v2.md)에서 tractability 기반 shortlist로

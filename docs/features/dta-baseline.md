@@ -64,4 +64,4 @@ provider, model, score type, 원 단위, 버전, latency, 상태와 원본 응�
 삭제하지 않는다. Decision은 이를 부정적인 결합 근거가 아니라 데이터 공백으로 해석한다.
 
 실행 안내는 [DeepPurpose DTA 독립 검증](../../experiments/deeppurpose-dta-smoke/README.md)을
-따른다. 관련 작업은 Issue #69다.
+따른다. 관련 작업은 [Issue #69](https://github.com/truthfree/EviDrug-Dacon2026/issues/69)다.

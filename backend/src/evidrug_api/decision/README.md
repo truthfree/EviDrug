@@ -4,10 +4,11 @@
 
 현재 생성은 `decision-gated-synthesis-v5.7`과 엄격한 12필드 `DecisionAssessment`를 쓴다.
 첨부 전문 `prompt_v5_7.txt`의 마지막 개행만 제거하며 LF SHA-256 앞 12자리는
-`d5bd73424fca`다. 입력 한도 64 KiB(+512 포함), 출력 4,096 tokens를 적용한다.
-JSON 파싱 실패와 근거 수치 범위·지표 라벨 위반은 같은 입력으로 교정 재호출을 최대 1회 수행하고,
-교정 호출에는 recall default를 제거해 모든 속성을 required로 선언한 생성 전용 strict JSON
-schema와 오류별 지시를 적용하고, 응답은 다시 기존 `DecisionAssessment`로 검증한다.
+`d5bd73424fca`다. 입력 한도 64 KiB(+512 포함), 출력 8,192 tokens를 적용한다.
+최초 호출과 교정 호출 모두 recall default를 제거해 모든 속성을 required로 선언한 생성 전용
+strict JSON schema를 사용한다. JSON 파싱 실패, 미완료 응답과 근거 수치 범위·지표 라벨 위반은
+같은 입력으로 교정 재호출을 최대 1회 수행하고 응답은 다시 기존 `DecisionAssessment`로 검증한다.
+수치 범위·라벨 교정은 네 assessment 영역의 `key_values`를 비워 같은 오류의 반복을 막는다.
 두 호출의 token·외부 요청 사용량과 교정 사유를 보존한다. schema·인용·정책 오류와
 네트워크 실패는 교정 대상이 아니며 자동 재호출하지 않는다. 이 경로는 #301의
 ADMET strict JSON 전송 모드와 별개이며 Decision은 서버가 생성 응답을 검증한다.
@@ -145,7 +146,7 @@ gap을 강제하지 않는다. 저장된 context projection은 그대로다.
 판정하거나 예측을 임상 독성 확정으로 표현하지 않는다. 이는 **LLM 지시문**이며
 두 축·양성 방향·백분위·근거 충분성을 서버가 결정적으로 검증한다는 뜻은 아니다.
 기존 서버 검증은 JSON 계약, 인용 ID, 누락 전문 단계의 Go 제한 등으로 그대로다.
-내부 평가에서 사용한 4분류 기준은 직접적인
+평가용 [4분류 기준](../../../../docs/evaluation/decision-criteria-v1.md)은 직접적인
 부정 근거를 요구하므로, 운영 3분류의 예측 기반 연구 우선순위와 같은 gold
 label로 혼합하지 않는다. ADMET-AI의 [공식 설명](https://admet.ai.greenstonebio.com/)에
 따르면 분류값은 해당 속성의 모델 예측 확률이고 DrugBank 백분위는 참조 집단 내
@@ -194,10 +195,10 @@ DTA assay도 전체 행과 긴 assay 설명을 전달하지 않는다. 전체 �
 일치해야 한다. 불일치하면 모델을 호출하지 않고 거부한다. #258 이전 snapshot처럼 `assay_runs`가
 없는 결과는 replay 호환을 위해 기존 lineage 검증 경로를 유지하되 새 SQL 참조를 만들지는 않는다.
 파싱 실패도 응답 사용량을 보존하고 자동 retry하지 않는다. API 장애로 사용량을 모르면 null이다.
-Decision의 단일 Responses 호출은 출력(보이지 않는 추론 토큰 포함)을 최대 4,096토큰으로
-제한한다. 운영 사례에서 기존 1,800토큰 한도에 정확히 도달해 응답이 미완료된 것을
-확인한 조정이다. 비용이 늘 수 있으므로 배포 후 새 분석 1건의 완료 여부와 실제 사용량을
-확인한다. 한도에 다시 도달하면 결과를 성공으로 보정하거나 자동 재시도하지 않는다.
+Decision의 단일 Responses 호출은 출력(보이지 않는 추론 토큰 포함)을 최대 8,192토큰으로
+제한한다. 4,096토큰에 정확히 도달한 미완료 응답은 같은 strict schema로 교정 재호출을 최대
+1회 수행한다. 비용이 늘 수 있으므로 배포 후 새 분석 1건의 완료 여부와 실제 사용량을 확인한다.
+두 번째 응답도 한도에 도달하면 결과를 성공으로 보정하거나 추가 재호출하지 않는다.
 
 profile의 recall depth가 1이고 baseline ADMET 근거가 있으면 첫 Decision은
 `cardiac_ion_channel_evidence`를 요청할 수 있다. 요청에는 조사 목적과 reason만 들어간다.

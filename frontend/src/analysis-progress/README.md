@@ -95,8 +95,8 @@ npm run build
 fixture에 포함하지 않았다. 테스트는 성공/실패 중 결과 유지, null/과거 schema, 잘못된 수치·enum,
 서열 필드 제외, 합성 방향 충돌, 알려지지 않은 사유·긴 표적명·HTML 문자열을 검증한다.
 
-실제 브라우저의 모바일/데스크톱 줄바꿈 확인은 [검증 절차](../../../docs/features/target-prioritization-ui.md)를 따른다.
+실제 브라우저의 모바일/데스크톱 줄바꿈 확인은 [검증 절차](../../../../docs/features/target-prioritization-ui.md)를 따른다.
 
-관련 작업은 #85,
-#91과
+관련 작업은 [#85](https://github.com/truthfree/EviDrug-Dacon2026/issues/85),
+[#91](https://github.com/truthfree/EviDrug-Dacon2026/issues/91)과
 `docs/features/analysis-orchestration.md`를 참고한다.

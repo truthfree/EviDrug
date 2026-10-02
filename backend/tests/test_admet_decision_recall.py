@@ -90,8 +90,15 @@ class RecallDecisionClient:
         self.expect_failure = expect_failure
 
     async def generate_text(
-        self, prompt: str, *, instructions: str, max_output_tokens: int
+        self,
+        prompt: str,
+        *,
+        instructions: str,
+        max_output_tokens: int,
+        output_schema: type[object] | None = None,
     ) -> GeneratedText:
+        assert max_output_tokens == 8192
+        assert output_schema is not None
         payload = json.loads(prompt)
         self.prompts.append(payload)
         first = len(self.prompts) == 1

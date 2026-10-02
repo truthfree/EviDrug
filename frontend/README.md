@@ -167,4 +167,4 @@ orchestration 목업 테스트는 전체 성공, DTA 건너뜀기, 전체 실패
 - 질환 입력 같은 후속 기능은 인증된 `Workspace` 영역에서 별도 기능 폴더로 연결한다.
 - 색상과 간격을 바꿀 때는 의미 기반 토큰을 우선 수정하고 컴포넌트별 예외를 최소화한다.
 
-관련 UX 기준은 [`docs/ux/current-experience.md`](../docs/ux/current-experience.md)를 따른다.
+관련 UX 기준은 `docs/ux/ux-draft.md`의 공개 랜딩과 공용 접근 코드 항목을 따른다.

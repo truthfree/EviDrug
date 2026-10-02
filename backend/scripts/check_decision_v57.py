@@ -20,6 +20,7 @@ from evidrug_api.decision.agent import (  # noqa: E402
     DECISION_MAX_OUTPUT_TOKENS,
     DECISION_PROMPT_VERSION,
     INSTRUCTIONS,
+    DecisionAssessmentGeneration,
     InvalidDecisionOutput,
     normalize_reader_numbers,
     remove_inline_evidence_markers,
@@ -91,6 +92,7 @@ async def main() -> None:
                             prompt,
                             instructions=INSTRUCTIONS,
                             max_output_tokens=DECISION_MAX_OUTPUT_TOKENS,
+                            output_schema=DecisionAssessmentGeneration,
                         )
                     except Exception as error:
                         row.update(status="model_error", error=model_call_diagnostic(error))

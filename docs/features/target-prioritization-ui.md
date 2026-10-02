@@ -98,6 +98,6 @@ fixture는 `TargetPrioritizationSummary` 및 개발 DB의 실제 공개 projecti
 - 실데이터 연결: `api.ts`, `AnalysisRunPanel.tsx`
 - 무료 목업: `targetDemo.ts`, `AnalysisProgressPanel.tsx`
 
-관련: #97,
-#95,
-#103.
+관련: [#97](https://github.com/truthfree/EviDrug-Dacon2026/issues/97),
+[#95](https://github.com/truthfree/EviDrug-Dacon2026/issues/95),
+[#103](https://github.com/truthfree/EviDrug-Dacon2026/issues/103).

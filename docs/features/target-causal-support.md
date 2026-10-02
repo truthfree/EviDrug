@@ -94,5 +94,5 @@ EVIDRUG_RUN_LIVE_PROVIDER_TESTS=1 \
 live smoke는 breast cancer에서 PIK3CA, BRCA2, CDK4를 각각 specified target으로 조회한다.
 외부 릴리스에 따라 evidence 내용은 바뀔 수 있으므로 기본 CI에서는 실행하지 않는다.
 
-관련: Issue #103,
+관련: [Issue #103](https://github.com/truthfree/EviDrug-Dacon2026/issues/103),
 [Target Prioritization v2](./target-prioritization-v2.md).

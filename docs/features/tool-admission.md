@@ -37,5 +37,5 @@ run_mismatch, tool_budget_exhausted, deadline_exceeded, request_conflict다.
 - 정책 변경 거부, SQL 저장 실패 rollback, 취소와 timeout을 검증한다.
 - migration·기존 backend 회귀 테스트를 통과한다. 운영 PostgreSQL/Render 실검증과 구분한다.
 
-백엔드 Issue #79.
+백엔드 [Issue #79](https://github.com/truthfree/EviDrug-Dacon2026/issues/79).
 프론트엔드 변경 없음. 상세 [구현 안내](../../backend/src/evidrug_api/tool_admission/README.md).
