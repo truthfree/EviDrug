@@ -205,6 +205,24 @@
   line-height: 1.5;
 }
 
+.analysis-input-field > p.analysis-input-example {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.64rem;
+}
+
+.analysis-input-example code {
+  min-width: 0;
+  color: var(--color-brand-deep);
+  font-family: var(--font-family-data);
+  font-size: 0.65rem;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
 .analysis-input-message {
   margin: 0;
   padding: 12px 14px;

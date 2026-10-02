@@ -302,7 +302,15 @@ describe('App authentication flow', () => {
     expect(
       screen.getByRole('heading', { name: '어떤 조건으로 화합물을 살펴볼까요?' }),
     ).toBeInTheDocument()
+    expect(screen.getByText('Breast cancer')).toBeInTheDocument()
     fireEvent.click(screen.getByRole('radio', { name: /특정 타깃 평가/ }))
+    expect(screen.getAllByText('Demo Guide')).toHaveLength(3)
+    expect(screen.getByText('CDK4')).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        'CC1=C(C(=O)N(C2=NC(=NC=C12)NC3=NC=C(C=C3)N4CCNCC4)C5CCCC5)C(=O)C',
+      ),
+    ).toBeInTheDocument()
     fireEvent.change(screen.getByRole('textbox', { name: 'Target name' }), {
       target: { value: 'BACE1' },
     })
