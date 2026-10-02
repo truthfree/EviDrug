@@ -104,4 +104,4 @@ uv run pytest tests/test_auth.py
 ## 관련 문서
 
 - [개발 기반 스펙의 접근 제어](../../../../docs/spec.md#7-접근-제어)
-- [기여 안내](../../../../CONTRIBUTING.md)
+- [개발 작업 및 코드 작성 규칙](../../../../docs/team-rules/development-rules.md)

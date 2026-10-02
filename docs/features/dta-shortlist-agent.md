@@ -57,8 +57,8 @@ Ensembl ID가 두 목록에 들어간다. 후보 안의 `ensembl_id`, `approved_
 이 변경은 과거 실패의 정확한 원인을 복원하거나 새 실모델 실행의 성공을 보장하지 않는다.
 무료 회귀 테스트로 계약과 저장 결과를 확인한 뒤, 실제 일반 실행은 별도 통합 검증에서 확인한다.
 
-관련: #96,
-#109.
+관련: [#96](https://github.com/truthfree/EviDrug-Dacon2026/issues/96),
+[#109](https://github.com/truthfree/EviDrug-Dacon2026/issues/109).
 
 ## BindingDB dual-model 확장 (#168)
 

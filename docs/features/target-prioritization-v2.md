@@ -55,7 +55,7 @@ tool call을 생성한다.
   않는다. 처음에는 결정적인 순차 실행을 기본으로 한다.
 
 현재 `provides_dta_input=True`는 하나 이상의 검증된 shortlist 후보가 있다는 뜻이다. 실제
-fan-out은 백엔드 Issue #96에서
+fan-out은 백엔드 [Issue #96](https://github.com/truthfree/EviDrug-Dacon2026/issues/96)에서
 구현하고 기존 `DtaExecutionService`와 공통 execution ledger를 재사용한다.
 
 ## API와 화면 상태
@@ -69,7 +69,7 @@ fan-out은 백엔드 Issue #96에서
 
 프론트는 이 값을 성공/실패 색상으로 단순화하지 않고 근거 있음, 추가 검증 필요, 제외를
 구분해야 한다. 실제 UI 구현은 프론트
-Issue #97과 별도 PR로 진행한다.
+[Issue #97](https://github.com/truthfree/EviDrug-Dacon2026/issues/97)과 별도 PR로 진행한다.
 
 ## 보안, 비용과 재현성
 
@@ -89,6 +89,6 @@ Issue #97과 별도 PR로 진행한다.
 - API가 sequence 없는 결과 요약을 제공한다.
 - 다중 DTA 비용·실패 격리·fan-in 계약이 문서화된다.
 
-관련 백엔드 Issue #95.
+관련 백엔드 [Issue #95](https://github.com/truthfree/EviDrug-Dacon2026/issues/95).
 개별 인과 근거와 치료 방향 계약은 후속
 [Target causal support](./target-causal-support.md)에서 확장한다.

@@ -71,7 +71,7 @@ DeepPurpose 0.1.5는 오래된 패키지이고 pretrained checkpoint의 split·c
 MAMMAL과 Boltz-2는 이 결과를 덮어쓰는 fallback이 아니라 서로 다른 provider 관측으로
 추가하며, provider 장애가 전체 분석을 실패시키지 않도록 후속 adapter에서 격리한다.
 
-관련: Issue #69,
+관련: [Issue #69](https://github.com/truthfree/EviDrug-Dacon2026/issues/69),
 [upstream](https://github.com/kexinhuang12345/DeepPurpose),
 [DTA 선행 검증](../../docs/features/dta-baseline.md)
 
@@ -134,4 +134,4 @@ python3 -m unittest discover -s experiments/deeppurpose-dta-smoke -p 'test_*.py'
 첫 호출의 provider 전체 시간은 컨테이너 시작·통신 등을 포함하며 runtime 로딩 시간과 다르다.
 peak RSS는 모델 프로세스의 누적 최대치로, API·worker·DB를 합한 메모리가 아니다.
 Render 실측, 운영 PostgreSQL 및 Free(512MB) 실행은 이번 결과로 검증되지 않았다.
-관련: Issue #73.
+관련: [Issue #73](https://github.com/truthfree/EviDrug-Dacon2026/issues/73).

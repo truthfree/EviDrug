@@ -6,8 +6,8 @@ CToxPred2 RF-SSL runtime의 report를 hERG, Nav1.5, Cav1.2 typed observation으�
 현재 단계는 계약, 격리 subprocess provider, 공통 runner 기반 SQL 저장, admission binding과
 live fallback 없는 observation snapshot/replay를 제공한다. 실제 RF-SSL CPU smoke에서 model
 load 후 peak RSS 약 486 MiB, 첫 추론 후 약 511 MiB, warm 중앙값 약 0.165초를 확인했다.
-배포 worker의 Linux 재측정과 동시성 검증은 별도 운영 Gate다. 이미지 설치와 검증 진입점은
-[`experiments/ctoxpred2-smoke`](../../../../experiments/ctoxpred2-smoke/README.md)에 있다.
+배포 worker의 Linux 재측정과 동시성 검증은 후속 운영 Gate다. 이미지 설치와 실행 절차는
+[`docs/deployment/ctoxpred2-recall.md`](../../../../docs/deployment/ctoxpred2-recall.md)에 있다.
 
 코드 읽는 순서는 다음과 같다.
 

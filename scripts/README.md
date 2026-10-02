@@ -1,5 +1,25 @@
 # 저장소 안전 검사
 
+## 로컬 실행 사전점검
+
+```sh
+python3 scripts/doctor.py
+python3 scripts/doctor.py --full
+```
+
+Docker/Compose, 디스크, CPU architecture와 필수 설정의 존재 여부를 확인한다. 비밀값 자체를
+출력하거나 외부 API를 호출하지 않는다. 자세한 절차는
+[로컬 실행 안내](../docs/local-setup.md)를 따른다.
+
+## 공개 snapshot 내보내기
+
+```sh
+python3 scripts/export_public_repo.py /path/to/new-empty-directory
+```
+
+추적된 파일 중 공개 정책에 맞는 파일만 새 빈 디렉터리로 복사한다. 기존 checkout을 덮어쓰거나
+삭제하지 않는다. 정책과 검토 절차는 [공개 저장소 동기화](../docs/public-sync.md)를 따른다.
+
 ## DTA 단독 진단
 
 분석이 끝나 worker가 유휴 상태일 때 저장소 루트에서 실행한다. 실행 중인 PoC worker의
@@ -54,4 +74,4 @@ API key나 DB를 읽거나 LLM을 호출하지 않는다. 이후 Compose 실행�
 `test_check_secrets.py`는 임시 저장소와 합성 키로 동작을 확인한다.
 검사 범위는 `.gitleaks.toml`, 경로 정책은 `forbidden_path()`에서 수정한다.
 
-설치·테스트·오류 대응은 [기여 안내](../CONTRIBUTING.md)를 따른다.
+설치·테스트·오류 대응은 [비밀정보 보호 규칙](../docs/team-rules/secret-protection.md)을 따른다.

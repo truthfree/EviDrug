@@ -52,4 +52,4 @@ manifest hash는 원본 모델 metadata를 찾는 식별자이지 context 내용
 누락 endpoint, 잘못된 입력, 크기 상한, SELECT-only/no-autoflush를 검증한다.
 전체 정규화 report보다 JSON byte 수가 줄어드는 것을 검사하며, tokenizer별 토큰 절감률이나
 실제 LLM 비용·판단 품질을 검증한 것으로 해석하지 않는다. 실제 모델/API 호출은 하지 않는다.
-백엔드 Issue #81, 프론트엔드 변경 없음.
+백엔드 [Issue #81](https://github.com/truthfree/EviDrug-Dacon2026/issues/81), 프론트엔드 변경 없음.

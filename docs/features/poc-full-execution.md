@@ -157,6 +157,6 @@ SQL 저장, 중복 전달, worker opt-in 조립과 자원 정리를 검증한다
 작업 환경에서 Docker socket 접근이 거부되어 변경 후 이미지 빌드 및 fresh 전체 live 실행은
 직접 검증하지 못했다. 사용자 단독 진단과 continuation 성공을 fresh 전체 실행으로 혼동하지 않는다.
 
-관련: #109,
-#96,
-#110.
+관련: [#109](https://github.com/truthfree/EviDrug-Dacon2026/issues/109),
+[#96](https://github.com/truthfree/EviDrug-Dacon2026/issues/96),
+[#110](https://github.com/truthfree/EviDrug-Dacon2026/issues/110).

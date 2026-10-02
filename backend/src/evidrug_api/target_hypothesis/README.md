@@ -79,7 +79,7 @@ SMILES는 이 단계의 LLM prompt에 전달하지 않는다. 현재 Target 단�
 `GET /api/v1/analyses/{analysis_id}`의 `target_prioritization`은 sequence를 제외한 요약만
 노출한다. 과거 Target v2 결과는 causal support를 `unknown`으로 안전하게 투영하며, Target 결과가
 없거나 계약을 충족하지 않는 JSON이면 `null`이다. 프론트 화면 표현은
-Issue #97에서 연결한다.
+[Issue #97](https://github.com/truthfree/EviDrug-Dacon2026/issues/97)에서 연결한다.
 
 ## 과학적 제약
 
@@ -132,6 +132,6 @@ Open Targets Platform data는 CC0 1.0이며 원 통합 데이터의 조건을 �
 UniProt의 copyrightable database content는 CC BY 4.0이다. API가 보고한 release와 조회 시각은
 저장하지만 장기 재현용 snapshot은 아직 만들지 않는다.
 
-관련: Issue #95,
+관련: [Issue #95](https://github.com/truthfree/EviDrug-Dacon2026/issues/95),
 [Target v2 기능 명세](../../../../docs/features/target-prioritization-v2.md),
 [causal support 기능 명세](../../../../docs/features/target-causal-support.md).

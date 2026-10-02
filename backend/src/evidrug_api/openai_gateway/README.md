@@ -75,4 +75,5 @@ max_retries=0, 출력 각 최대 2,048 tokens, 총 사용량 2,352 tokens였다.
 두 실행의 ADME·TOXICITY는 새 출력 계약 component를 기록했고 ADMET 경고는 없었다.
 이는 통합 작업본의 런타임 증거이며, 이 PR만 적용한 빌드의 배포 검증이나 #300의
 지정 개발 사례 각각 3회 반복 검증을 대신하지 않는다.
-합성 smoke는 실제 자격증명이나 원 응답을 fixture로 커밋하지 않고 구조화 출력 계약만 검증한다.
+합성 smoke의 비용·호환성 기록은
+[`issue301-structured-output-smoke-20261001.json`](../../../../docs/evaluation/issue301-structured-output-smoke-20261001.json)에 보존한다.

@@ -3,7 +3,7 @@
 ADMET·DTA의 실행 소유권과 장애 이력을 SQL에 보존한다. 모델 선택, 과학적 판단,
 자동 재시도 및 전체 분석 orchestration은 담당하지 않는다.
 
-새 도구 연결 시 [기여 안내](../../../../CONTRIBUTING.md)의 출처·라이선스·검증 원칙을 따른다.
+새 도구 연결 시 [도구 확장 규칙과 체크리스트](../../../../docs/team-rules/tool-extension-rules.md)를 따른다.
 
 ## 구조와 진입점
 
@@ -65,4 +65,4 @@ uv run --no-env-file pytest tests/test_tool_execution.py tests/test_admet_reposi
 
 프로세스 강제 종료는 lease_expired로만 알 수 있다. OOM 여부는 플랫폼 로그로 확인해야 한다.
 이 작업은 `analyses`의 전체 상태를 변경하거나 Render를 재시작하지 않는다.
-관련: [기능 명세](../../../../docs/features/tool-execution-lifecycle.md), Issue #77.
+관련: [기능 명세](../../../../docs/features/tool-execution-lifecycle.md), [Issue #77](https://github.com/truthfree/EviDrug-Dacon2026/issues/77).

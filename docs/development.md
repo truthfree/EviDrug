@@ -36,6 +36,8 @@ EviDrug의 기술 구성과 로컬 개발 진입점을 정리한 문서입니다
 Docker Desktop이 실행 중인 상태에서 저장소 루트에서 전체 서비스를 시작합니다.
 
 ```sh
+cp .env.example .env
+python3 scripts/doctor.py
 docker compose up --build
 ```
 
@@ -52,6 +54,8 @@ docker compose down
 
 기본 Compose worker는 모든 대용량 분석 모델을 포함하지 않습니다. ADMET, DTA와 Decision을
 실제로 실행하려면 [PoC 전체 실행 안내](features/poc-full-execution.md)를 따릅니다.
+새 checkout의 인증 설정과 실행 수준별 요구사항은 [로컬 실행 안내](local-setup.md)를 먼저
+확인합니다.
 
 ## 개별 개발 환경
 
@@ -78,8 +82,8 @@ npm run dev
 [프론트엔드 개발 안내](../frontend/README.md)를 참고합니다.
 
 환경변수 이름과 예시는 각 애플리케이션의 `.env.example`에서 확인합니다. 비밀값은
-저장소에 커밋하지 않습니다. 첫 개발 전에 [기여 안내](../CONTRIBUTING.md)의 비밀정보
-검사 절차를 적용합니다.
+저장소에 커밋하지 않으며, 첫 개발 전에
+[비밀정보 보호 설정](team-rules/secret-protection.md)을 적용합니다.
 
 ## 검증
 
@@ -105,7 +109,7 @@ docker compose config --quiet
 ## 더 읽기
 
 - [전체 문서 목록](README.md)
-- [기여 안내](../CONTRIBUTING.md)
+- [팀 개발 규칙](team-rules/README.md)
 - [백엔드 개발 안내](../backend/README.md)
 - [프론트엔드 개발 안내](../frontend/README.md)
 - [현재 프로젝트 상태](project-status.md)

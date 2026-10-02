@@ -287,7 +287,8 @@ production도 같은 설정 계약을 사용한다. `is_evaluation` 같은 조�
 
 profile 이름뿐 아니라 펼쳐진 실제 설정과 hash, code commit, prompt·모델·도구·데이터·정책
 버전과 실제 사용량을 보존한다. 기록된 관측 재생은 Decision이나 routing의 영향만 분리해
-검사할 때 사용하고, 실도구 실행의 비용·latency 평가와 구분한다.
+검사할 때 사용하고, 실도구 실행의 비용·latency 평가와 구분한다. 상세 실험 축과 비교군은
+[평가 계약](../evaluation/README.md#ablation-실행-설정)을 따른다.
 
 ### 6. 자동 평가와 인간 평가를 분리한다
 
@@ -347,6 +348,6 @@ review로 분리한다. 평가자는 0/0.5/1 rubric을 사용하고 두 명이�
 ## 구현 영향
 
 - 분석 작업과 Agent 실행 테이블은 현재 상태와 append-only event를 분리한다.
-- 새 Agent는 고정 입력·출력 계약, 실패 방식과 비교 가능한 검증 기준을 함께 정의한다.
+- 새 Agent Issue는 [평가 계약과 구현 체크리스트](../evaluation/README.md)를 참조한다.
 - Decision 출력은 사용한 `claim_id`를 참조해야 하며 출처 없는 핵심 주장을 허용하지 않는다.
 - 평가 runner와 dataset 구축은 Agent 구현과 분리된 후속 Issue로 진행한다.
