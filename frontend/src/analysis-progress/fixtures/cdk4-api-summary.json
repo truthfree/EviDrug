@@ -1,0 +1,53 @@
+{
+  "modality": "small_molecule",
+  "primary": {
+    "rank": 1,
+    "ensembl_id": "ENSG00000135446",
+    "approved_symbol": "CDK4",
+    "uniprot_accession": "P11802",
+    "association_score": 0.6307216615133534,
+    "eligibility": "eligible",
+    "eligibility_reason_codes": [
+      "approved_small_molecule",
+      "structure_with_ligand",
+      "high_quality_ligand",
+      "high_quality_pocket",
+      "druggable_family"
+    ],
+    "tractability_assessments": [
+      { "label": "Approved Drug", "value": true },
+      { "label": "Advanced Clinical", "value": false },
+      { "label": "Phase 1 Clinical", "value": false },
+      { "label": "Structure with Ligand", "value": true },
+      { "label": "High-Quality Ligand", "value": true },
+      { "label": "High-Quality Pocket", "value": true },
+      { "label": "Med-Quality Pocket", "value": false },
+      { "label": "Druggable Family", "value": true }
+    ],
+    "pharos_evidence": {
+      "uniprot_accession": "P11802",
+      "development_level": "Tclin",
+      "target_family": "Kinase",
+      "novelty": 0.00036742,
+      "ligand_count": 526,
+      "publication_count": 508,
+      "source_version": "graphql-live",
+      "retrieved_at": "2026-09-29T12:00:00Z"
+    },
+    "causal_support": {
+      "status": "unknown",
+      "reason_codes": ["causal_evidence_missing"],
+      "biological_evidence_count": 0,
+      "clinical_validation_count": 0,
+      "therapeutic_direction": "unknown",
+      "evidence": []
+    },
+    "causal_evidence_ids": [],
+    "modulation_action": "inhibit",
+    "prioritization_rationale": "CDK4는 cyclin D-CDK4 복합체의 Ser/Thr 키나아제로 RB1을 인산화해 G1/S 세포주기 진행을 촉진하므로, 유방암에서 억제가 질병 관련 기능을 저해할 수 있다. 질병 연관성 점수는 0.631이며, 승인 저분자 약물·리간드 결합 구조·고품질 리간드 및 포켓 근거가 있어 저분자 표적 후보로 적합하다.",
+    "causal_rationale": "개별 인과 근거가 제공되지 않아 인과성을 판단하지 않았습니다."
+  },
+  "alternatives": [],
+  "excluded_candidates": [],
+  "source_version": "api-26.6.3/data-26.06"
+}

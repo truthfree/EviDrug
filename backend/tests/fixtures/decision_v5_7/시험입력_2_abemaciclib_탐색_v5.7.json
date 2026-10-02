@@ -1,0 +1,356 @@
+{
+ "disease": "breast cancer",
+ "target_mode": "discover",
+ "dta_reference_boundary": {
+  "endpoint": "Kd",
+  "value": 100,
+  "unit": "nM",
+  "pkd": 7.0,
+  "role": "comparison_boundary"
+ },
+ "missing_stages": [],
+ "allowed_evidence_ids": [
+  "target:ENSG00000183765",
+  "target:ENSG00000149311",
+  "target:ENSG00000012048",
+  "admet:context",
+  "dta:ENSG00000183765",
+  "dta:ENSG00000149311",
+  "dta:ENSG00000012048",
+  "dta:interpretation"
+ ],
+ "required_citation_prefixes": [
+  "admet",
+  "dta",
+  "target"
+ ],
+ "allowed_verdicts": [
+  "conditional_go",
+  "no_go"
+ ],
+ "evidence": {
+  "target:ENSG00000183765": {
+   "symbol": "CHEK2",
+   "association": 0.8381,
+   "eligibility": "eligible",
+   "causal_status": "supported",
+   "policy_direction": "unknown",
+   "reason_codes": [
+    "statistical_genetic_evidence_present",
+    "clinical_genetic_evidence_present",
+    "somatic_driver_evidence_present",
+    "clinical_validation_present",
+    "direct_disease_evidence_present",
+    "subtype_evidence_present",
+    "therapeutic_direction_conflicting"
+   ],
+   "llm_direction": "unknown",
+   "source_version": "api-26.9.0/data-26.09"
+  },
+  "target:ENSG00000149311": {
+   "symbol": "ATM",
+   "association": 0.7775,
+   "eligibility": "eligible",
+   "causal_status": "supported",
+   "policy_direction": "unknown",
+   "reason_codes": [
+    "statistical_genetic_evidence_present",
+    "clinical_genetic_evidence_present",
+    "somatic_driver_evidence_present",
+    "direct_disease_evidence_present",
+    "subtype_evidence_present",
+    "therapeutic_direction_conflicting"
+   ],
+   "llm_direction": "unknown",
+   "source_version": "api-26.9.0/data-26.09"
+  },
+  "target:ENSG00000012048": {
+   "symbol": "BRCA1",
+   "association": 0.8437,
+   "eligibility": "eligible",
+   "causal_status": "supported",
+   "policy_direction": "activate",
+   "reason_codes": [
+    "statistical_genetic_evidence_present",
+    "clinical_genetic_evidence_present",
+    "somatic_driver_evidence_present",
+    "direct_disease_evidence_present",
+    "subtype_evidence_present"
+   ],
+   "llm_direction": "activate",
+   "source_version": "api-26.9.0/data-26.09"
+  },
+  "admet:context": {
+   "execution_status": "completed",
+   "reference_population": "bundled DrugBank approved, all ATC groups",
+   "selection_coverage": {
+    "selected_endpoint_count": 16,
+    "catalog_endpoint_count": 49,
+    "is_subset": true
+   },
+   "missing_endpoints": [],
+   "rows": [
+    {
+     "endpoint_id": "AMES",
+     "name": "Mutagenicity",
+     "category": "Toxicity",
+     "task_type": "classification",
+     "value": 0.6018,
+     "units": null,
+     "approved_drug_percentile": 87.9
+    },
+    {
+     "endpoint_id": "hERG",
+     "name": "hERG Blocking",
+     "category": "Toxicity",
+     "task_type": "classification",
+     "value": 0.9847,
+     "units": null,
+     "approved_drug_percentile": 98.8
+    },
+    {
+     "endpoint_id": "DILI",
+     "name": "Drug Induced Liver Injury",
+     "category": "Toxicity",
+     "task_type": "classification",
+     "value": 0.8284,
+     "units": null,
+     "approved_drug_percentile": 74.2
+    },
+    {
+     "endpoint_id": "LD50_Zhu",
+     "name": "Acute Toxicity LD50",
+     "category": "Toxicity",
+     "task_type": "regression",
+     "value": 2.8131,
+     "units": "log(1/(mol/kg))",
+     "approved_drug_percentile": 68.9
+    },
+    {
+     "endpoint_id": "Solubility_AqSolDB",
+     "name": "Aqueous Solubility",
+     "category": "Absorption",
+     "task_type": "regression",
+     "value": -3.6733,
+     "units": "log(mol/L)",
+     "approved_drug_percentile": 38.0
+    },
+    {
+     "endpoint_id": "Caco2_Wang",
+     "name": "Cell Effective Permeability",
+     "category": "Absorption",
+     "task_type": "regression",
+     "value": -4.9068,
+     "units": "log(10^-6 cm/s)",
+     "approved_drug_percentile": 54.6
+    },
+    {
+     "endpoint_id": "HIA_Hou",
+     "name": "Human Intestinal Absorption",
+     "category": "Absorption",
+     "task_type": "classification",
+     "value": 0.9936,
+     "units": null,
+     "approved_drug_percentile": 45.9
+    },
+    {
+     "endpoint_id": "Bioavailability_Ma",
+     "name": "Oral Bioavailability",
+     "category": "Absorption",
+     "task_type": "classification",
+     "value": 0.8364,
+     "units": null,
+     "approved_drug_percentile": 58.0
+    },
+    {
+     "endpoint_id": "logP",
+     "name": "LogP",
+     "category": "Physicochemical",
+     "task_type": "regression",
+     "value": 4.9369,
+     "units": "log-ratio",
+     "approved_drug_percentile": 88.1
+    },
+    {
+     "endpoint_id": "tpsa",
+     "name": "Topological Polar Surface Area (TPSA)",
+     "category": "Physicochemical",
+     "task_type": "regression",
+     "value": 75,
+     "units": "Å^2",
+     "approved_drug_percentile": 49.9
+    },
+    {
+     "endpoint_id": "molecular_weight",
+     "name": "Molecular Weight",
+     "category": "Physicochemical",
+     "task_type": "regression",
+     "value": 506.605,
+     "units": "Dalton",
+     "approved_drug_percentile": 82.5
+    },
+    {
+     "endpoint_id": "PPBR_AZ",
+     "name": "Plasma Protein Binding Rate",
+     "category": "Distribution",
+     "task_type": "regression",
+     "value": 90.2392,
+     "units": "%",
+     "approved_drug_percentile": 73.9
+    },
+    {
+     "endpoint_id": "Clearance_Hepatocyte_AZ",
+     "name": "Drug Clearance (Hepatocyte)",
+     "category": "Excretion",
+     "task_type": "regression",
+     "value": 25.8513,
+     "units": "uL/min/10^6 cells",
+     "approved_drug_percentile": 39.2
+    },
+    {
+     "endpoint_id": "Clearance_Microsome_AZ",
+     "name": "Drug Clearance (Microsome)",
+     "category": "Excretion",
+     "task_type": "regression",
+     "value": 47.1172,
+     "units": "uL/min/mg",
+     "approved_drug_percentile": 75.5
+    },
+    {
+     "endpoint_id": "CYP3A4_Veith",
+     "name": "CYP3A4 Inhibition",
+     "category": "Metabolism",
+     "task_type": "classification",
+     "value": 0.5113,
+     "units": null,
+     "approved_drug_percentile": 80.2
+    },
+    {
+     "endpoint_id": "CYP2D6_Veith",
+     "name": "CYP2D6 Inhibition",
+     "category": "Metabolism",
+     "task_type": "classification",
+     "value": 0.5046,
+     "units": null,
+     "approved_drug_percentile": 85.6
+    }
+   ],
+   "toxicity_axes": {
+    "policy_version": "toxicity-priority-policy-v1",
+    "policy": "priority_check when value >= 0.5 AND approved-drug percentile >= 90 (team confirmatory-check priority policy, not a toxicity verdict)",
+    "axes": [
+     {
+      "axis": "mutagenicity",
+      "endpoint_id": "AMES",
+      "value": 0.6018,
+      "approved_drug_percentile": 87.9,
+      "priority_status": "not_priority"
+     },
+     {
+      "axis": "cardiac_ion_channel",
+      "endpoint_id": "hERG",
+      "value": 0.9847,
+      "approved_drug_percentile": 98.8,
+      "priority_status": "priority_check"
+     },
+     {
+      "axis": "liver_injury",
+      "endpoint_id": "DILI",
+      "value": 0.8284,
+      "approved_drug_percentile": 74.2,
+      "priority_status": "not_priority"
+     }
+    ]
+   }
+  },
+  "dta:ENSG00000183765": {
+   "approved_symbol": "CHEK2",
+   "uniprot_accession": "O96017",
+   "status": "succeeded",
+   "model_runs": [
+    {
+     "model_id": "CNN_CNN_BindingDB",
+     "status": "succeeded",
+     "predicted_pkd": 5.93
+    },
+    {
+     "model_id": "MPNN_CNN_BindingDB",
+     "status": "succeeded",
+     "predicted_pkd": 5.13
+    }
+   ],
+   "region_status": "same_region_below_reference",
+   "experimental_evidence_summary": {
+    "included_count": 0,
+    "key_records": []
+   },
+   "experimental_binding_support": false,
+   "pubchem_requested": false,
+   "pubchem_executed": false,
+   "pubchem_execution_issue": null
+  },
+  "dta:ENSG00000149311": {
+   "approved_symbol": "ATM",
+   "uniprot_accession": "Q13315",
+   "status": "succeeded",
+   "model_runs": [
+    {
+     "model_id": "CNN_CNN_BindingDB",
+     "status": "succeeded",
+     "predicted_pkd": 5.76
+    },
+    {
+     "model_id": "MPNN_CNN_BindingDB",
+     "status": "succeeded",
+     "predicted_pkd": 5.74
+    }
+   ],
+   "region_status": "same_region_below_reference",
+   "experimental_evidence_summary": {
+    "included_count": 0,
+    "key_records": []
+   },
+   "experimental_binding_support": false,
+   "pubchem_requested": false,
+   "pubchem_executed": false,
+   "pubchem_execution_issue": null
+  },
+  "dta:ENSG00000012048": {
+   "approved_symbol": "BRCA1",
+   "uniprot_accession": "P38398",
+   "status": "succeeded",
+   "model_runs": [
+    {
+     "model_id": "CNN_CNN_BindingDB",
+     "status": "succeeded",
+     "predicted_pkd": 5.39
+    },
+    {
+     "model_id": "MPNN_CNN_BindingDB",
+     "status": "succeeded",
+     "predicted_pkd": 5.84
+    }
+   ],
+   "region_status": "same_region_below_reference",
+   "experimental_evidence_summary": {
+    "included_count": 0,
+    "key_records": []
+   },
+   "experimental_binding_support": false,
+   "pubchem_requested": false,
+   "pubchem_executed": false,
+   "pubchem_execution_issue": null
+  },
+  "dta:interpretation": {
+   "summary": null,
+   "limitations": "모델 결합 예측은 실험값·약효·억제/활성화 방향의 증명이 아닙니다."
+  }
+ },
+ "allow_recall": false,
+ "recall_feedback": null,
+ "lead_candidate": {
+  "ensembl_id": "ENSG00000012048",
+  "symbol": "BRCA1",
+  "rule": "most supported gates among target-disease and compound-target; ties by supplied candidate order"
+ }
+}

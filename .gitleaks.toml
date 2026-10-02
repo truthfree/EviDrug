@@ -1,0 +1,11 @@
+title = "EviDrug secret protection"
+
+[extend]
+useDefault = true
+
+# 기본 규칙에 없는 길이/형식도 OpenAI 키 접두사로 보수적으로 차단한다.
+[[rules]]
+id = "evidrug-openai-key"
+description = "OpenAI-style credential"
+regex = '''\bsk-(?:proj-|svcacct-)?[A-Za-z0-9_-]{20,}'''
+keywords = ["sk-"]

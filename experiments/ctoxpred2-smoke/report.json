@@ -1,0 +1,60 @@
+{
+  "schema_version": "1",
+  "run_date": "2026-09-25",
+  "platform": "macOS 14.0 arm64",
+  "python": "3.9.23",
+  "tool_version": "rf-ssl-2a31aa119e27-r1",
+  "upstream_commit": "2a31aa119e27b6b69a5588d18a01f2a27fef4524",
+  "cases": [
+    {
+      "id": "ethanol",
+      "canonical_smiles": "CCO",
+      "predictions": {
+        "herg": {"label": "negative", "class_probability": 0.5073214285714286},
+        "nav1_5": {"label": "negative", "class_probability": 0.6325},
+        "cav1_2": {"label": "negative", "class_probability": 0.67}
+      }
+    },
+    {
+      "id": "tamoxifen",
+      "canonical_smiles": "CC/C(=C(\\c1ccccc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+      "predictions": {
+        "herg": {"label": "positive", "class_probability": 0.9925},
+        "nav1_5": {"label": "positive", "class_probability": 0.9475},
+        "cav1_2": {"label": "positive", "class_probability": 0.57}
+      }
+    }
+  ],
+  "two_case_process_seconds": 3.38,
+  "benchmark": {
+    "case": "tamoxifen",
+    "iterations": 10,
+    "artifact_verify_seconds": 0.133737625,
+    "model_load_seconds": 0.411315792,
+    "latency_seconds": {
+      "first": 0.549713625,
+      "warm_min": 0.1598095,
+      "warm_median": 0.164896459,
+      "warm_mean": 0.170475509,
+      "warm_p95_approx": 0.189312875
+    },
+    "process_peak_rss_mib": {
+      "after_import": 159.28125,
+      "after_artifact_verify": 173.5625,
+      "after_model_load": 485.546875,
+      "after_first_inference": 510.984375,
+      "after_ten_inferences": 519.203125
+    },
+    "measurement": "resource.getrusage(RUSAGE_SELF).ru_maxrss with macOS byte normalization",
+    "limitations": [
+      "ru_maxrss is a process lifetime high-water mark, not current RSS.",
+      "The approximate p95 is based on only nine warm samples.",
+      "Repeat peak RSS and concurrency measurements on the Linux deployment worker."
+    ]
+  },
+  "warnings": [
+    "RDKit emitted a MorganGenerator deprecation warning from the PyBioMed fingerprint path.",
+    "scikit-learn reported all-missing descriptor columns for each single-compound request; the pinned preprocessing pipeline still completed."
+  ],
+  "interpretation": "Smoke verifies reproducible execution only; predictions are not clinical cardiac safety conclusions."
+}

@@ -1,0 +1,11 @@
+*
+!.dockerignore
+!Dockerfile
+!lifelines
+!lifelines/**
+!prepare_model.py
+!pyproject.toml
+!smoke.py
+!runtime.py
+!uv.lock
+!wget.py

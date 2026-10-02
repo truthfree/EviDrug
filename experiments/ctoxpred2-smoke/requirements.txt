@@ -1,0 +1,11 @@
+# RF-SSL runtime versions used by the reviewed macOS smoke. PyBioMed is copied
+# from a commit-pinned archive in the Dockerfile because its legacy setup.py
+# cannot be resolved reliably by current isolated-build tooling.
+numpy==1.23.5
+pandas==2.0.3
+scipy==1.11.4
+scikit-learn==1.3.1
+joblib==1.5.1
+rdkit==2025.3.5
+mordred==1.2.0
+openbabel-wheel==3.1.1.22

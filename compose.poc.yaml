@@ -1,0 +1,13 @@
+# 대용량 실모델은 명시적 opt-in. 기본 API/프론트 이미지는 가볍게 유지한다.
+services:
+  worker:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.poc
+    environment:
+      EVIDRUG_POC_MODELS_ENABLED: "true"
+      EVIDRUG_CTOXPRED2_RECALL_ENABLED: ${EVIDRUG_CTOXPRED2_RECALL_ENABLED:-true}
+      EVIDRUG_DTA_ASSAY_PROVIDERS_ENABLED: ${EVIDRUG_DTA_ASSAY_PROVIDERS_ENABLED:-true}
+    cpus: 1
+    mem_limit: 2g

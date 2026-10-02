@@ -1,0 +1,58 @@
+[project]
+name = "evidrug-api"
+version = "1.0.0"
+description = "FastAPI and Celery backend for EviDrug"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "alembic>=1.19.2",
+    "celery[redis]>=5.6.3",
+    "fastapi>=0.141.1",
+    "httpx[socks]>=0.28.1",
+    "itsdangerous>=2.2.0",
+    "openai>=3.14.1",
+    "psycopg[binary,pool]>=3.3.5",
+    "pydantic-settings>=2.15.0",
+    "pwdlib[argon2]>=0.3.0",
+    "redis>=6.4.0",
+    "rdkit>=2025.9.6",
+    "sqlalchemy[asyncio]>=2.0.52",
+    "uvicorn[standard]>=0.52.4",
+]
+
+[project.scripts]
+evidrug-api = "evidrug_api.main:run"
+
+[build-system]
+requires = ["uv_build>=0.11.24,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "aiosqlite>=0.22.1",
+    "mypy>=2.3.1",
+    "openai-agents==0.22.3",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.16.7",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["celery", "celery.*", "rdkit", "rdkit.*"]
+ignore_missing_imports = true

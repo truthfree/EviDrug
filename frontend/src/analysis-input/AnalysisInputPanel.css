@@ -1,0 +1,271 @@
+.analysis-input-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 42px 64px;
+  margin-top: 20px;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  box-shadow: 0 20px 54px color-mix(in srgb, var(--color-brand-deep) 7%, transparent);
+}
+
+.analysis-input-heading {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.analysis-input-heading > span {
+  min-width: 48px;
+  color: var(--color-brand-action);
+  font-family: var(--font-family-data);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.analysis-input-heading h2 {
+  max-width: 520px;
+  margin: 7px 0 0;
+  color: var(--color-brand-deep);
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1.18;
+}
+
+.analysis-input-heading div > p:last-child {
+  max-width: 520px;
+  margin: 14px 0 0;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.confirmed-disease-summary {
+  grid-column: 1;
+  display: grid;
+  gap: 7px;
+  align-self: start;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--color-brand-action) 22%, transparent);
+  border-radius: var(--radius-control);
+  background: var(--color-brand-soft);
+}
+
+.confirmed-disease-summary span {
+  color: var(--color-text-tertiary);
+  font-size: 0.7rem;
+}
+
+.confirmed-disease-summary strong {
+  color: var(--color-brand-deep);
+}
+
+.confirmed-disease-summary code,
+.analysis-input-result code {
+  overflow-wrap: anywhere;
+  color: var(--color-brand-action);
+  font-family: var(--font-family-data);
+  font-size: 0.72rem;
+}
+
+.analysis-input-form {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  gap: 26px;
+}
+
+.target-mode-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.potency-criterion-notice {
+  min-width: 0;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-primary);
+}
+
+.potency-criterion-notice strong {
+  color: var(--color-brand-deep);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.potency-criterion-notice > p {
+  color: var(--color-text-tertiary);
+  font-size: 0.68rem;
+  margin: 12px 0 0;
+  line-height: 1.6;
+}
+
+.target-mode-fieldset legend,
+.analysis-input-field > label {
+  margin-bottom: 11px;
+  color: var(--color-brand-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.target-mode-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.target-mode-options label {
+  display: flex;
+  gap: 12px;
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  background: var(--color-surface-primary);
+}
+
+.target-mode-options label:hover {
+  border-color: var(--color-border-strong);
+}
+
+.target-mode-options label.target-mode-option--selected {
+  border-color: var(--color-brand-action);
+  background: var(--color-brand-soft);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-action) 8%, transparent);
+}
+
+.target-mode-options input {
+  width: 17px;
+  height: 17px;
+  margin: 2px 0 0;
+  accent-color: var(--color-brand-action);
+}
+
+.target-mode-options span {
+  display: grid;
+  gap: 7px;
+}
+
+.target-mode-options strong {
+  color: var(--color-brand-deep);
+  font-size: 0.82rem;
+}
+
+.target-mode-options small {
+  color: var(--color-text-secondary);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.analysis-input-field {
+  display: grid;
+}
+
+.analysis-input-field input,
+.analysis-input-field textarea {
+  width: 100%;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  color: var(--color-text-primary);
+  background: var(--color-surface-primary);
+  font: inherit;
+}
+
+.analysis-input-field input {
+  min-height: 50px;
+  padding: 0 15px;
+}
+
+.analysis-input-field textarea {
+  min-height: 112px;
+  padding: 14px 15px;
+  resize: vertical;
+  font-family: var(--font-family-data);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.analysis-input-field input:focus,
+.analysis-input-field textarea:focus {
+  border-color: var(--color-brand-action);
+  outline: none;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-brand-action) 10%, transparent);
+}
+
+.analysis-input-field > p {
+  margin: 9px 0 0;
+  color: var(--color-text-tertiary);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
+.analysis-input-message {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-small);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+.analysis-input-message--error {
+  color: var(--color-status-danger);
+  background: var(--color-status-danger-soft);
+}
+
+.analysis-input-result {
+  display: flex;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid color-mix(in srgb, var(--color-status-success) 20%, transparent);
+  border-radius: var(--radius-control);
+  color: var(--color-status-success);
+  background: var(--color-status-success-soft);
+}
+
+.analysis-input-result > div {
+  display: grid;
+  gap: 5px;
+}
+
+.analysis-input-result span {
+  color: var(--color-text-secondary);
+  font-size: 0.68rem;
+}
+
+.analysis-input-submit {
+  justify-self: start;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 0;
+  color: var(--color-text-inverse);
+  background: var(--color-brand-action);
+}
+
+.analysis-input-submit:hover:not(:disabled) {
+  background: var(--color-brand-action-hover);
+}
+
+@media (max-width: 900px) {
+  .analysis-input-card {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis-input-heading,
+  .confirmed-disease-summary,
+  .analysis-input-form {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .target-mode-options {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,90 @@
+:root {
+  --color-brand-primary: #315b71;
+  --color-brand-deep: #1d3553;
+  --color-brand-action: #126d77;
+  --color-brand-action-hover: #0d5962;
+  --color-brand-soft: #e8f3f3;
+  --color-brand-subtle: #f5f8fa;
+  --color-surface-canvas: #f5f8fa;
+  --color-surface-primary: #fbfdfe;
+  --color-surface-raised: #ffffff;
+  --color-surface-inverse: #142a3b;
+  --color-surface-soft: #eaf0f3;
+  --color-text-primary: #1c2a36;
+  --color-text-secondary: #526272;
+  --color-text-tertiary: #5c6c7a;
+  --color-text-inverse: #ffffff;
+  --color-border-default: #d8e1e8;
+  --color-border-strong: #7a8e9e;
+  --color-status-success: #28744a;
+  --color-status-success-soft: #e5f2ed;
+  --color-status-warning: #946014;
+  --color-status-warning-soft: #fcf1dd;
+  --color-status-danger: #ac4055;
+  --color-status-danger-soft: #f9e8eb;
+  --color-status-information: #4169a1;
+  --color-status-information-soft: #e8eff8;
+  --font-family-interface: "Pretendard Variable", Pretendard, Inter, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-family-data: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  --shadow-raised: 0 24px 70px rgba(29, 53, 83, 0.11);
+  --shadow-action: 0 12px 28px rgba(18, 109, 119, 0.22);
+  --radius-small: 8px;
+  --radius-control: 12px;
+  --radius-card: 20px;
+  --radius-panel: 28px;
+  color: var(--color-text-primary);
+  background: var(--color-surface-canvas);
+  font-family: var(--font-family-interface);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-surface-canvas);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-brand-action) 42%, transparent);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

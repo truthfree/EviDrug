@@ -1,0 +1,245 @@
+.workspace-shell {
+  background:
+    radial-gradient(
+      circle at 90% 0,
+      color-mix(in srgb, var(--color-brand-action) 11%, transparent),
+      transparent 31rem
+    ),
+    var(--color-brand-subtle);
+}
+
+.workspace-header {
+  width: 100%;
+  padding-inline: max(24px, calc((100% - 1200px) / 2));
+  border-bottom: 1px solid var(--color-border-default);
+  background: color-mix(in srgb, var(--color-surface-raised) 82%, transparent);
+  backdrop-filter: blur(16px);
+}
+
+.workspace-header nav {
+  align-self: stretch;
+}
+
+.workspace-header nav a,
+.workspace-header nav span {
+  display: flex;
+  align-items: center;
+}
+
+.workspace-header nav span {
+  color: var(--color-text-tertiary);
+}
+
+.workspace-header nav .workspace-nav__active {
+  position: relative;
+  color: var(--color-brand-action);
+}
+
+.workspace-nav__active::after {
+  content: '';
+  height: 2px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--color-brand-action);
+}
+
+.secondary-button {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-secondary);
+  background: var(--color-surface-raised);
+}
+
+.secondary-button:hover:not(:disabled) {
+  color: var(--color-brand-action);
+  border-color: var(--color-brand-action);
+}
+
+.workspace-main {
+  padding-block: 84px;
+}
+
+.workspace-main > [hidden] {
+  display: none;
+}
+
+.workspace-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 48px;
+  align-items: end;
+}
+
+.workspace-intro h1 {
+  max-width: 960px;
+  margin: 0;
+  color: var(--color-brand-deep);
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  font-weight: 750;
+  letter-spacing: -0.065em;
+  line-height: 1.08;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+.workspace-intro > div > p:last-child {
+  max-width: 900px;
+  margin: 24px 0 0;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+  word-break: keep-all;
+}
+
+.workspace-intro h1 span,
+.workspace-intro > div > p:last-child span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.session-card {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  padding: 15px 17px;
+  border: 1px solid color-mix(in srgb, var(--color-status-success) 18%, transparent);
+  border-radius: var(--radius-control);
+  background: var(--color-status-success-soft);
+}
+
+.session-card div {
+  display: grid;
+  gap: 3px;
+}
+
+.session-card strong {
+  color: var(--color-status-success);
+  font-size: 0.83rem;
+}
+
+.session-card span:last-child {
+  color: var(--color-text-secondary);
+  font-size: 0.7rem;
+}
+
+.workspace-error {
+  display: flex;
+  gap: 9px;
+  margin: 24px 0 0;
+  padding: 11px 12px;
+  border-radius: var(--radius-small);
+  color: var(--color-status-danger);
+  background: var(--color-status-danger-soft);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.workspace-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.workspace-step {
+  display: grid;
+  gap: 30px;
+  min-height: 150px;
+  padding: 20px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-control);
+  background: color-mix(in srgb, var(--color-surface-raised) 60%, transparent);
+}
+
+.workspace-step > span {
+  color: var(--color-text-tertiary);
+  font-family: var(--font-family-data);
+  font-size: 0.68rem;
+}
+
+.workspace-step strong {
+  color: var(--color-brand-deep);
+  font-size: 0.88rem;
+}
+
+.workspace-step small {
+  color: var(--color-text-tertiary);
+  font-size: 0.7rem;
+}
+
+.workspace-step--ready {
+  border-color: color-mix(in srgb, var(--color-brand-action) 30%, transparent);
+  background: var(--color-brand-soft);
+}
+
+.workspace-step--ready small {
+  color: var(--color-brand-action);
+  font-weight: 700;
+}
+
+.workspace-step--complete {
+  border-color: color-mix(in srgb, var(--color-status-success) 28%, transparent);
+  background: var(--color-status-success-soft);
+}
+
+.workspace-step--complete small {
+  color: var(--color-status-success);
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .workspace-intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .workspace-header {
+    padding-inline: 14px;
+    padding-block: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .workspace-header nav {
+    order: 3;
+    width: 100%;
+    min-height: 44px;
+    gap: 24px;
+    overflow-x: auto;
+  }
+
+  .workspace-header nav a,
+  .workspace-header nav span {
+    white-space: nowrap;
+  }
+
+  .workspace-main {
+    padding-block: 56px;
+  }
+
+  .workspace-intro h1 span,
+  .workspace-intro > div > p:last-child span {
+    display: inline;
+    white-space: normal;
+  }
+
+  .workspace-flow {
+    grid-template-columns: 1fr;
+  }
+}
+.workspace-back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  color: var(--color-brand-action);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.workspace-back-link:hover { text-decoration: underline; }

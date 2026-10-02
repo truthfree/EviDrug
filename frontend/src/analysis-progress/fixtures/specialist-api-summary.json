@@ -1,0 +1,210 @@
+{
+  "analysis_id": "00000000-0000-4000-8000-000000000001",
+  "status": "failed",
+  "admet": {
+    "run_id": "00000000-0000-4000-8000-000000000002",
+    "status": "completed",
+    "projection_status": "available",
+    "result": {
+      "source_run_id": "00000000-0000-4000-8000-000000000002",
+      "source_tool_call_id": "00000000-0000-4000-8000-000000000003",
+      "tool_version": "1.4.0",
+      "reference_population": "bundled DrugBank approved, all ATC groups",
+      "selected_endpoint_count": 12,
+      "catalog_endpoint_count": 49,
+      "selection_is_subset": true,
+      "missing_endpoints": [],
+      "endpoints": [
+        {
+          "endpoint_id": "AMES",
+          "name": "Mutagenicity",
+          "category": "Toxicity",
+          "task_type": "classification",
+          "value": 0.2732613801956177,
+          "units": null,
+          "drugbank_approved_percentile": 63.164017060876304,
+          "species": "salmonella typhimurium",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/tox/#ames-mutagenicity"
+        },
+        {
+          "endpoint_id": "hERG",
+          "name": "hERG Blocking",
+          "category": "Toxicity",
+          "task_type": "classification",
+          "value": 0.8158712983131409,
+          "units": null,
+          "drugbank_approved_percentile": 79.44939899185731,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/tox/#herg-blockers"
+        },
+        {
+          "endpoint_id": "DILI",
+          "name": "Drug Induced Liver Injury",
+          "category": "Toxicity",
+          "task_type": "classification",
+          "value": 0.9796170234680176,
+          "units": null,
+          "drugbank_approved_percentile": 97.16944552151996,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/tox/#dili-drug-induced-liver-injury"
+        },
+        {
+          "endpoint_id": "LD50_Zhu",
+          "name": "Acute Toxicity LD50",
+          "category": "Toxicity",
+          "task_type": "regression",
+          "value": 2.9076283553172204,
+          "units": "log(1/(mol/kg))",
+          "drugbank_approved_percentile": 74.2535866614967,
+          "species": "rat",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/tox/#acute-toxicity-ld50"
+        },
+        {
+          "endpoint_id": "Caco2_Wang",
+          "name": "Cell Effective Permeability",
+          "category": "Absorption",
+          "task_type": "regression",
+          "value": -5.282801522917702,
+          "units": "log(10^-6 cm/s)",
+          "drugbank_approved_percentile": 32.570763861962,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/adme/#caco-2-cell-effective-permeability-wang-et-al"
+        },
+        {
+          "endpoint_id": "HIA_Hou",
+          "name": "Human Intestinal Absorption",
+          "category": "Absorption",
+          "task_type": "classification",
+          "value": 0.9995265960693359,
+          "units": null,
+          "drugbank_approved_percentile": 73.47809228383095,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/adme/#hia-human-intestinal-absorption-hou-et-al"
+        },
+        {
+          "endpoint_id": "Bioavailability_Ma",
+          "name": "Oral Bioavailability",
+          "category": "Absorption",
+          "task_type": "classification",
+          "value": 0.8778765797615051,
+          "units": null,
+          "drugbank_approved_percentile": 66.96393951143854,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/adme/#bioavailability-ma-et-al"
+        },
+        {
+          "endpoint_id": "Solubility_AqSolDB",
+          "name": "Aqueous Solubility",
+          "category": "Absorption",
+          "task_type": "regression",
+          "value": -3.132798821678443,
+          "units": "log(mol/L)",
+          "drugbank_approved_percentile": 48.196975571927105,
+          "species": null,
+          "source_url": "https://tdcommons.ai/single_pred_tasks/adme/#solubility-aqsoldb"
+        },
+        {
+          "endpoint_id": "PPBR_AZ",
+          "name": "Plasma Protein Binding Rate",
+          "category": "Distribution",
+          "task_type": "regression",
+          "value": 75.32986943391943,
+          "units": "%",
+          "drugbank_approved_percentile": 50.019387359441644,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/adme/#ppbr-plasma-protein-binding-rate-astrazeneca"
+        },
+        {
+          "endpoint_id": "CYP3A4_Veith",
+          "name": "CYP3A4 Inhibition",
+          "category": "Metabolism",
+          "task_type": "classification",
+          "value": 0.7294180870056153,
+          "units": null,
+          "drugbank_approved_percentile": 88.56145792943,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/adme/#cyp-p450-3a4-inhibition-veith-et-al"
+        },
+        {
+          "endpoint_id": "CYP2D6_Veith",
+          "name": "CYP2D6 Inhibition",
+          "category": "Metabolism",
+          "task_type": "classification",
+          "value": 0.05762708503752947,
+          "units": null,
+          "drugbank_approved_percentile": 52.7723924001551,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/adme/#cyp-p450-2d6-inhibition-veith-et-al"
+        },
+        {
+          "endpoint_id": "Clearance_Microsome_AZ",
+          "name": "Drug Clearance (Microsome)",
+          "category": "Excretion",
+          "task_type": "regression",
+          "value": 46.26806963235393,
+          "units": "uL/min/mg",
+          "drugbank_approved_percentile": 75.06785575804575,
+          "species": "human",
+          "source_url": "https://tdcommons.ai/single_pred_tasks/adme/#clearance-astrazeneca"
+        }
+      ],
+      "interpretation": {
+        "summary": "모델 분류 출력은 AMES 0.2733, hERG 0.8159, DILI 0.9796이며, 분류 기준값이 제공되지 않아 양성·음성 판정은 할 수 없습니다 [AMES, hERG, DILI]. 회귀 출력은 LD50_Zhu 2.9076 log(1/(mol/kg)), Caco2_Wang -5.2828 log(10^-6 cm/s), Solubility_AqSolDB -3.1328 log(mol/L), PPBR_AZ 75.3299%, Clearance_Microsome_AZ 46.2681 uL/min/mg입니다 [LD50_Zhu, Caco2_Wang, Solubility_AqSolDB, PPBR_AZ, Clearance_Microsome_AZ]. HIA_Hou와 Bioavailability_Ma의 분류 출력은 각각 0.9995와 0.8779입니다 [HIA_Hou, Bioavailability_Ma]. CYP3A4_Veith와 CYP2D6_Veith의 해당 모델 출력은 각각 0.7294와 0.0576이며, 이를 실제 약물 억제 효과로 해석하지 않습니다 [CYP3A4_Veith, CYP2D6_Veith]. DrugBank 승인 약물 대비 백분위는 참고 집단 내 순위이며 신뢰도나 보편적 양호·불량 의미가 아닙니다 [AMES, hERG, DILI, LD50_Zhu, Caco2_Wang, HIA_Hou, Bioavailability_Ma, Solubility_AqSolDB, PPBR_AZ, CYP3A4_Veith, CYP2D6_Veith, Clearance_Microsome_AZ].",
+        "used_evidence_ids": [
+          "AMES",
+          "hERG",
+          "DILI",
+          "LD50_Zhu",
+          "Caco2_Wang",
+          "HIA_Hou",
+          "Bioavailability_Ma",
+          "Solubility_AqSolDB",
+          "PPBR_AZ",
+          "CYP3A4_Veith",
+          "CYP2D6_Veith",
+          "Clearance_Microsome_AZ"
+        ],
+        "limitations": [
+          "예측값이며 실험 측정값이나 임상 검증 결과가 아닙니다.",
+          "분류 임계값이 제공되지 않았습니다.",
+          "백분위는 DrugBank 승인 약물 대비 참조 순위입니다.",
+          "단위가 null인 분류 출력의 단위는 지정되지 않았습니다."
+        ]
+      },
+      "interpretation_note": "Predictions are not experimental measurements. Percentile is reference rank, not confidence or a universal safety direction. Null units mean unspecified units.",
+      "limitations": [
+        "Not predictive accuracy or clinical validation.",
+        "DrugBank percentiles are not prediction confidence."
+      ]
+    },
+    "error_code": null,
+    "warning_codes": [],
+    "token_usage": {
+      "input_tokens": 1367,
+      "output_tokens": 684,
+      "total_tokens": 2051
+    }
+  },
+  "dta": {
+    "run_id": "00000000-0000-4000-8000-000000000004",
+    "status": "failed",
+    "projection_status": "unavailable",
+    "result": null,
+    "error_code": "dta_candidates_incomplete",
+    "warning_codes": [],
+    "token_usage": null
+  },
+  "decision": {
+    "run_id": "00000000-0000-4000-8000-000000000005",
+    "status": "failed",
+    "projection_status": "unavailable",
+    "result": null,
+    "error_code": "decision_invalid_output",
+    "warning_codes": [],
+    "token_usage": {
+      "input_tokens": 2032,
+      "output_tokens": 616,
+      "total_tokens": 2648
+    }
+  }
+}

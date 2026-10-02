@@ -1,0 +1,6 @@
+**
+!Dockerfile
+!pyproject.toml
+!uv.lock
+!smoke.py
+!runtime.py

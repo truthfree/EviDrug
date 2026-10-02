@@ -1,0 +1,22 @@
+[project]
+name = "evidrug-admet-smoke"
+version = "0.1.0"
+description = "Isolated ADMET-AI v1 baseline feasibility check"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "admet-ai==1.4.0",
+    "torch==2.5.0+cpu",
+    # v1의 pandas/모델 환경에서 NumPy 2 ABI 혼용을 피한다.
+    "numpy==1.26.4",
+]
+
+[tool.uv]
+environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }

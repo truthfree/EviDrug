@@ -1,0 +1,2 @@
+{"protocol":1,"request_id":"ethanol","arguments":{"schema_version":"1","canonical_smiles":"CCO"}}
+{"protocol":1,"request_id":"tamoxifen","arguments":{"schema_version":"1","canonical_smiles":"CC/C(=C(\\c1ccccc1)c1ccc(OCCN(C)C)cc1)c1ccccc1"}}

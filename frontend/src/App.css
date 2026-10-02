@@ -1,0 +1,240 @@
+.site-shell,
+.workspace-shell {
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 74% 8%,
+      color-mix(in srgb, var(--color-brand-action) 12%, transparent),
+      transparent 25rem
+    ),
+    linear-gradient(var(--color-surface-canvas), var(--color-brand-subtle));
+}
+
+.site-header,
+.site-footer,
+.workspace-main,
+.hero,
+.evidence-section,
+.research-note,
+.connection-banner {
+  width: min(1200px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.site-header,
+.workspace-header {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--color-brand-deep);
+  font-size: 1.16rem;
+  font-weight: 760;
+  letter-spacing: -0.035em;
+  text-decoration: none;
+}
+
+.brand__mark {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-content: center;
+  gap: 3px;
+  border-radius: 9px;
+  background: var(--color-brand-deep);
+  transform: rotate(-5deg);
+}
+
+.brand__mark span {
+  width: 14px;
+  height: 2px;
+  display: block;
+  border-radius: 999px;
+  background: var(--color-text-inverse);
+}
+
+.brand__mark span:nth-child(2) {
+  width: 10px;
+}
+
+.site-header nav,
+.workspace-header nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.site-header nav a,
+.workspace-header nav a,
+.workspace-header nav span {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 620;
+  text-decoration: none;
+}
+
+.site-header nav a:hover,
+.workspace-header nav a:hover {
+  color: var(--color-brand-action);
+}
+
+.status-symbol {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.status-symbol--warning {
+  color: var(--color-status-warning);
+  background: color-mix(in srgb, var(--color-surface-raised) 72%, transparent);
+}
+
+.status-symbol--success {
+  color: var(--color-status-success);
+  background: var(--color-status-success-soft);
+}
+
+.version-badge {
+  position: fixed;
+  right: 12px;
+  bottom: 10px;
+  z-index: 20;
+  margin: 0;
+  padding: 4px 7px;
+  border: 1px solid color-mix(in srgb, var(--color-border-default) 72%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--color-text-tertiary) 76%, transparent);
+  background: color-mix(in srgb, var(--color-surface-raised) 76%, transparent);
+  box-shadow: 0 2px 8px rgba(29, 53, 83, 0.05);
+  font-family: var(--font-family-data);
+  font-size: 0.62rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  cursor: help;
+  user-select: all;
+  backdrop-filter: blur(6px);
+}
+
+.eyebrow,
+.section-label {
+  color: var(--color-brand-action);
+  font-size: 0.74rem;
+  font-weight: 760;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+}
+
+.eyebrow > span {
+  width: 26px;
+  height: 1px;
+  background: var(--color-brand-action);
+}
+
+.section-label {
+  margin: 0 0 8px;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: var(--radius-control);
+  font-weight: 720;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.primary-button {
+  padding: 0 22px;
+  border: 1px solid transparent;
+  color: var(--color-text-inverse);
+  background: var(--color-brand-action);
+  box-shadow: var(--shadow-action);
+}
+
+.primary-button:hover:not(:disabled) {
+  background: var(--color-brand-action-hover);
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--color-brand-action) 30%, transparent);
+  transform: translateY(-2px);
+}
+
+.primary-button:disabled {
+  color: color-mix(in srgb, var(--color-text-inverse) 74%, transparent);
+  background: color-mix(in srgb, var(--color-brand-action) 62%, var(--color-surface-soft));
+  box-shadow: none;
+}
+
+.primary-button svg,
+.secondary-button svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.button-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spinner 700ms linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes status-pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header,
+  .site-footer,
+  .workspace-main,
+  .hero,
+  .evidence-section,
+  .research-note,
+  .connection-banner {
+    width: min(100% - 28px, 1200px);
+  }
+
+  .site-header nav,
+  .workspace-header nav {
+    display: none;
+  }
+}

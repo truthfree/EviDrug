@@ -1,0 +1,16 @@
+# 루트를 build context로 사용하는 경우에도 개발 비밀을 제외한다.
+.env
+.env.*
+**/.env
+**/.env.*
+.git
+.tools
+**/.venv
+**/node_modules
+**/__pycache__
+**/.mypy_cache
+**/.pytest_cache
+**/.ruff_cache
+**/dist
+docs
+.codex

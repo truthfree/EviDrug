@@ -1,0 +1,149 @@
+name: evidrug
+
+services:
+  postgres:
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-evidrug}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-only-change-me}
+      POSTGRES_USER: ${POSTGRES_USER:-evidrug}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7.4.7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  migrate:
+    build:
+      context: ./backend
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      EVIDRUG_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-evidrug}:${POSTGRES_PASSWORD:-local-only-change-me}@postgres:5432/${POSTGRES_DB:-evidrug}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  api:
+    build:
+      context: ./backend
+    environment:
+      EVIDRUG_ACCESS_CODE_HASH: ${EVIDRUG_ACCESS_CODE_HASH:-}
+      EVIDRUG_AUTH_ATTEMPT_LIMIT: ${EVIDRUG_AUTH_ATTEMPT_LIMIT:-5}
+      EVIDRUG_AUTH_ATTEMPT_WINDOW_SECONDS: ${EVIDRUG_AUTH_ATTEMPT_WINDOW_SECONDS:-300}
+      EVIDRUG_API_ANALYSIS_LIMIT: ${EVIDRUG_API_ANALYSIS_LIMIT:-5}
+      EVIDRUG_CORS_ORIGINS: '["http://localhost:5173"]'
+      EVIDRUG_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-evidrug}:${POSTGRES_PASSWORD:-local-only-change-me}@postgres:5432/${POSTGRES_DB:-evidrug}
+      EVIDRUG_ENVIRONMENT: ${EVIDRUG_ENVIRONMENT:-local}
+      EVIDRUG_OPENAI_API_KEY: ${EVIDRUG_OPENAI_API_KEY:-}
+      EVIDRUG_OPENAI_BASE_URL: ${EVIDRUG_OPENAI_BASE_URL:-https://dacon-apim-hackathon-0903.azure-api.net/hackathon/openai/v1}
+      EVIDRUG_OPENAI_MAX_RETRIES: ${EVIDRUG_OPENAI_MAX_RETRIES:-2}
+      EVIDRUG_OPENAI_MODEL: ${EVIDRUG_OPENAI_MODEL:-gpt-5.6-sol}
+      EVIDRUG_OPENAI_TIMEOUT_SECONDS: ${EVIDRUG_OPENAI_TIMEOUT_SECONDS:-60}
+      EVIDRUG_OPEN_TARGETS_GRAPHQL_URL: ${EVIDRUG_OPEN_TARGETS_GRAPHQL_URL:-https://api.platform.opentargets.org/api/v4/graphql}
+      EVIDRUG_OPEN_TARGETS_TIMEOUT_SECONDS: ${EVIDRUG_OPEN_TARGETS_TIMEOUT_SECONDS:-15}
+      EVIDRUG_DISEASE_CANDIDATE_LIMIT: ${EVIDRUG_DISEASE_CANDIDATE_LIMIT:-5}
+      EVIDRUG_UNIPROT_BASE_URL: ${EVIDRUG_UNIPROT_BASE_URL:-https://rest.uniprot.org}
+      EVIDRUG_TARGET_LOOKUP_TIMEOUT_SECONDS: ${EVIDRUG_TARGET_LOOKUP_TIMEOUT_SECONDS:-20}
+      EVIDRUG_TARGET_CANDIDATE_LIMIT: ${EVIDRUG_TARGET_CANDIDATE_LIMIT:-5}
+      EVIDRUG_TARGET_SHORTLIST_LIMIT: ${EVIDRUG_TARGET_SHORTLIST_LIMIT:-3}
+      EVIDRUG_REDIS_URL: redis://redis:6379/0
+      EVIDRUG_SESSION_SECRET: ${EVIDRUG_SESSION_SECRET:-}
+      EVIDRUG_SESSION_TTL_SECONDS: ${EVIDRUG_SESSION_TTL_SECONDS:-28800}
+      EVIDRUG_VISITOR_TTL_SECONDS: ${EVIDRUG_VISITOR_TTL_SECONDS:-7776000}
+    ports:
+      - "8000:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health')",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  worker:
+    build:
+      context: ./backend
+    command:
+      [
+        "celery",
+        "-A",
+        "evidrug_api.worker:celery_app",
+        "worker",
+        "--loglevel=INFO",
+        "--concurrency=1",
+      ]
+    environment:
+      EVIDRUG_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-evidrug}:${POSTGRES_PASSWORD:-local-only-change-me}@postgres:5432/${POSTGRES_DB:-evidrug}
+      EVIDRUG_ENVIRONMENT: ${EVIDRUG_ENVIRONMENT:-local}
+      EVIDRUG_OPENAI_API_KEY: ${EVIDRUG_OPENAI_API_KEY:-}
+      EVIDRUG_OPENAI_BASE_URL: ${EVIDRUG_OPENAI_BASE_URL:-https://dacon-apim-hackathon-0903.azure-api.net/hackathon/openai/v1}
+      EVIDRUG_OPENAI_MAX_RETRIES: ${EVIDRUG_OPENAI_MAX_RETRIES:-2}
+      EVIDRUG_OPENAI_MODEL: ${EVIDRUG_OPENAI_MODEL:-gpt-5.6-sol}
+      EVIDRUG_OPENAI_TIMEOUT_SECONDS: ${EVIDRUG_OPENAI_TIMEOUT_SECONDS:-60}
+      EVIDRUG_OPEN_TARGETS_GRAPHQL_URL: ${EVIDRUG_OPEN_TARGETS_GRAPHQL_URL:-https://api.platform.opentargets.org/api/v4/graphql}
+      EVIDRUG_OPEN_TARGETS_TIMEOUT_SECONDS: ${EVIDRUG_OPEN_TARGETS_TIMEOUT_SECONDS:-15}
+      EVIDRUG_DISEASE_CANDIDATE_LIMIT: ${EVIDRUG_DISEASE_CANDIDATE_LIMIT:-5}
+      EVIDRUG_UNIPROT_BASE_URL: ${EVIDRUG_UNIPROT_BASE_URL:-https://rest.uniprot.org}
+      EVIDRUG_TARGET_LOOKUP_TIMEOUT_SECONDS: ${EVIDRUG_TARGET_LOOKUP_TIMEOUT_SECONDS:-20}
+      EVIDRUG_TARGET_CANDIDATE_LIMIT: ${EVIDRUG_TARGET_CANDIDATE_LIMIT:-5}
+      EVIDRUG_TARGET_SHORTLIST_LIMIT: ${EVIDRUG_TARGET_SHORTLIST_LIMIT:-3}
+      EVIDRUG_ORCHESTRATION_LEASE_SECONDS: ${EVIDRUG_ORCHESTRATION_LEASE_SECONDS:-1200}
+      EVIDRUG_REDIS_URL: redis://redis:6379/0
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+
+  scheduler:
+    profiles: ["maintenance"]
+    build:
+      context: ./backend
+    command:
+      ["celery", "-A", "evidrug_api.worker:celery_app", "beat", "--loglevel=INFO", "--schedule=/tmp/celerybeat-schedule"]
+    environment:
+      EVIDRUG_REDIS_URL: redis://redis:6379/0
+    depends_on:
+      worker:
+        condition: service_started
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000}
+    ports:
+      - "5173:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  redis-data:
