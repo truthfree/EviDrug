@@ -26,6 +26,10 @@ const initialSubmissionState: SubmissionState = {
   message: null,
 }
 
+const EXAMPLE_TARGET_NAME = 'CDK4'
+const EXAMPLE_SMILES =
+  'CC1=C(C(=O)N(C2=NC(=NC=C12)NC3=NC=C(C=C3)N4CCNCC4)C5CCCC5)C(=O)C'
+
 /** 확정된 질환에 사용할 타깃 방식과 화합물 SMILES를 입력받는다. */
 export function AnalysisInputPanel({ disease, onValidatedInputChange }: AnalysisInputPanelProps) {
   const [targetMode, setTargetMode] = useState<TargetMode | null>(null)
@@ -147,6 +151,9 @@ export function AnalysisInputPanel({ disease, onValidatedInputChange }: Analysis
               required
               onChange={handleTargetNameChange}
             />
+            <p className="analysis-input-example">
+              Demo Guide <code>{EXAMPLE_TARGET_NAME}</code>
+            </p>
             <p>현재는 입력한 이름을 보존하며 표준 타깃 ID 확인은 다음 단계에서 진행합니다.</p>
           </div>
         )}
@@ -163,6 +170,9 @@ export function AnalysisInputPanel({ disease, onValidatedInputChange }: Analysis
             required
             onChange={handleSmilesChange}
           />
+          <p className="analysis-input-example">
+            Demo Guide <code>{EXAMPLE_SMILES}</code>
+          </p>
           <p>분자 구조로 해석할 수 있는지 확인하며 데이터베이스 등록 여부는 제한하지 않습니다.</p>
         </div>
 

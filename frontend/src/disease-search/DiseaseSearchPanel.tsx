@@ -83,6 +83,9 @@ export function DiseaseSearchPanel({ onConfirmedDiseaseChange }: DiseaseSearchPa
             <span className="disease-search-spinner" aria-label="질환 후보 검색 중" />
           )}
         </div>
+        <p className="disease-search-example">
+          Demo Guide <code>Breast cancer</code>
+        </p>
         <p id="disease-query-help" className="disease-search-help">
           두 글자 이상 입력하면 후보를 검색합니다. 현재 영어 입력만 지원합니다.
         </p>

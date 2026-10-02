@@ -92,6 +92,24 @@
   font-size: 0.74rem;
 }
 
+.disease-search-example {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+  margin: 9px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 0.64rem;
+  line-height: 1.5;
+}
+
+.disease-search-example code {
+  color: var(--color-brand-deep);
+  font-family: var(--font-family-data);
+  font-size: 0.65rem;
+  user-select: all;
+}
+
 .disease-search-results {
   margin-top: 16px;
   overflow: hidden;
